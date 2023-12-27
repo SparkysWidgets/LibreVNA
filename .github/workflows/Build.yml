@@ -148,7 +148,7 @@ jobs:
       - name: Build application
         run: |
           cd Software/PC_Application/LibreVNA-GUI
-          qmake LibreVNA-GUI.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
+          qmake LibreVNA-GUI.pro CONFIG+=debug CONFIG+=qml_debug
           make -j9
         shell: cmd
 
