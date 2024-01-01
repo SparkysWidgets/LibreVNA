@@ -98,7 +98,7 @@ LibreCALDialog::LibreCALDialog(Calibration *cal) :
     updateCalibrationStartStatus();
     updateDeviceStatus();
     connect(&updateTimer, &QTimer::timeout, this, &LibreCALDialog::updateDeviceStatus);
-    updateTimer.start(1000);
+    updateTimer.start(3000);
 }
 
 LibreCALDialog::~LibreCALDialog()
