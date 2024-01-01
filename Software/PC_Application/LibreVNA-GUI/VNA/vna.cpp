@@ -890,7 +890,12 @@ void VNA::NewDatapoint(DeviceDriver::VNAMeasurement m)
                 if(m_avg.pointNum == settings.npoints - 1) {
                     calMeasuring = false;
                     cal.measurementsComplete();
-                    delete calDialog;
+                    //This seems to stop the segfault crash but causes lots of dialogs?
+                    //is this a case of bad pointers, dialog type or mem location?
+                    QMetaObject::invokeMethod(calDialog, "delete", Qt::QueuedConnection);
+                    //lets try sleeping then deleting?
+                    //delete calDialog;
+
                 }
             }
         }

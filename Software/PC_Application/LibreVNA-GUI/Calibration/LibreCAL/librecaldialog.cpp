@@ -40,6 +40,8 @@ LibreCALDialog::LibreCALDialog(Calibration *cal) :
             connect(device, &CalDevice::updateCoefficientsDone, [=](bool success){
                 busy = false;
                 if(success) {
+                    // Sleeping for a couple seconds seems to fix a crash that poped up
+                    Sleep(500);
                     ui->progressCoeff->setValue(100);
                     ui->lCoefficientStatus->setText("Coefficients loaded.");
                     coeffSet = device->getCoefficientSets()[0];
